@@ -20,11 +20,21 @@ jobs:
         name: Login to Docker Hub
         uses: docker/login-action@v4
         with:
-          username: "sidguleria0@gmail.com"
-          password: "sibh@rTH@281"
+          username: ${{ DOCKERUSER }}
+          password: ${{ DOCKER_PASSWORD }}
     -
         name: Build and push
         uses: docker/build-push-action@v7
         with:
           push: true
           tags: sidharthguleria/mp-app-test:latest
+
+    # - name: Execute remote SSH commands
+    #     uses: appleboy/ssh-action@v1.0.3
+    #     with:
+    #       host: ${{ secrets.HOST }}
+    #       username: ${{ secrets.USERNAME }}
+    #       key: ${{ secrets.SSH_PRIVATE_KEY }}
+    #       port: 22
+         
+      
